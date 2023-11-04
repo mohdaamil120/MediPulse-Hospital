@@ -1,0 +1,244 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    }
+    
+    body {
+    background-color: #f6f7f8;
+    }
+    
+    .main-outer-container {
+    display: flex;
+    /* position: relative; */
+    margin-bottom: 100px;
+    }
+    
+    /* left container */
+    
+    .left-container {
+    width: 25%;
+    /* position: fixed; */
+    height: 100%;
+    padding-bottom: 15px;
+    left: 1%;
+    top: 2.5%;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    
+    .left-container .logo-container {
+    width: 150px;
+    height: 60px;
+    margin-top: 40px ;
+    margin-left: 70px;
+    }
+    
+    .left-container .logo-container img {
+    width: 100%;
+    }
+    
+    .admin-card {
+    display: flex;
+    margin: 5% 5% 10% 5%;
+    gap: 10%;
+    padding: 5%;
+    background-color: #EDEFF1;
+    border-radius: 10px;
+    margin-top: 50px;
+    }
+    
+    .admin-card .admin-image-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    }
+    
+    .admin-card .admin-image-container img {
+    width: 100%;
+    border-radius: 50%;
+    }
+    
+    .admin-card h4 {
+    display: flex;
+    align-items: center;
+    }
+    
+    .admin-options {
+    margin: 0 5% 0 5%;
+    background-color: #EDEFF1;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #637381;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 5% 0 5% 5%;
+    }
+    
+    .admin-options .user-card {
+    display: flex;
+    gap: 30px;
+    cursor: pointer;
+    padding: 10px;
+    }
+    
+    .admin-options .user-card:hover{
+        background-color: #d7e0f0;
+        /* padding-top: 5px;
+        padding-bottom: 5px; */
+    }
+    
+    .admin-options .destination-card:hover{
+        background-color: #d7e0f0;
+    }
+
+    .admin-options .destination-card {
+    display: flex;
+    gap: 28px;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+    .admin-options .destination-icon {
+    padding-left: 10px;
+    cursor: pointer;
+    }
+    
+    /* end of left container */
+    
+    /* right container */
+    
+    .info-new-user-button h1{
+        font-weight: bold;
+        font-size: 20px;
+    }
+    
+    .right-container {
+    /* position: fixed; */
+    left: 30%;
+    top: 2.5%;
+    right: 2.5%;
+    height: 95vh;
+    /* overflow: auto; */
+    }
+    
+    .right-container .info-new-user-button {
+    display: flex;
+    justify-content: space-between;
+    padding: 3% 2% 3% 2%;
+    }
+    
+    .right-container .info-new-user-button button {
+    padding: 10px 19px 10px 10px;
+    border-radius: 5px;
+    background-color: #2065D1;
+    color: white;
+    border: none;
+    font-size: 18px;
+    box-shadow: rgba(32, 101, 209, 0.24) 0px 8px 16px 0px;
+    cursor: pointer;
+    }
+    
+    .right-container .info-new-user-button button .inside-button {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    }
+    
+    .right-container .user-table {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 0 2%;
+    }
+    
+    .right-container .user-table .search-card {
+    display: flex;
+    padding: 3% 0;
+    gap: 14px;
+    align-items: center;
+    font-size: 22px;
+    }
+    
+    .right-container .user-table .search-card input {
+    font-size: 19px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(218, 214, 214);
+    padding-bottom: 5px;
+    }
+    
+    /* actual table */
+    
+    
+    /* CSS for the table */
+    table {
+        width: 100%;
+        /* border-collapse: collapse; */
+        margin-top: 20px;
+    }
+    
+    th, td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+    }
+    
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+    
+    /* CSS for buttons */
+    .edit{
+        background-color: lightgreen;
+        padding: 5px 10px 5px 10px;
+        
+    }
+    .delete{
+        background-color: rgb(247, 86, 86);
+        padding: 5px;
+    }
+    
+    button {
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 2px;
+    }
+    
+    .delete:hover {
+        background-color: red;
+        color: white;
+    }
+    .edit:hover {
+        background-color: green;
+        color: white;
+    }
+    
+    .user-table table .heading .head-row th {
+    width: 200px;
+    padding: 18px 0 ;
+    }
+    
+    @media screen and (max-width: 800px){
+        
+       .main-outer-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 100px;
+        }
+    
+        .left-container{
+            /* border: 1px solid green; */
+            width: 100%;
+            margin-bottom: 50px;
+        }
+    }
