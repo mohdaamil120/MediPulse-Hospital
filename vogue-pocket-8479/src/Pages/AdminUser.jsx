@@ -5,13 +5,18 @@ import { shallowEqual, useDispatch } from 'react-redux'
 import "./Admin.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus,} from '@fortawesome/free-solid-svg-icons';
-import {Button} from "@chakra-ui/react";
+import {Box, Button, Text} from "@chakra-ui/react";
 
 
 
 export default function AdminUser({setIsAddingHotel,searchQuery}) {
   return (
     <div>
+         <Box borderRadius="10px" bg="#212529">
+        <Text paddingTop="10px" paddingBottom="10px" color="white" fontSize="4xl" mb={4} fontWeight="bold">
+            Admin Users
+        </Text>
+      </Box>
         <div className="right-container">
         <div className="info-new-user-button">
             <h1>User Details</h1>
@@ -20,7 +25,7 @@ export default function AdminUser({setIsAddingHotel,searchQuery}) {
             leftIcon={<FontAwesomeIcon icon={faPlus} />}
             >
             <div className="inside-button">
-               <Link style={ {color:"white",textDecoration:"none", paddingTop:"15px"}} to={"/addhotel"}> <p>Add New Hotel</p></Link>
+               <Link style={ {color:"white",textDecoration:"none", paddingTop:"15px"}} to={"/addhotel"}> <p>Add New User</p></Link>
             </div>
             </Button>
         </div>

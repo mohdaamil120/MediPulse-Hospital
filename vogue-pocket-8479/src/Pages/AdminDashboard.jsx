@@ -29,7 +29,7 @@ function AdminDashboard() {
 
   return (
     <div className="dashboard" >
-      <header className="bg-dark text-white p-3 text-center">
+      <header style={{borderRadius:"10px"}} className="bg-dark text-white p-3 text-center">
         <h1>Hospital Admin Dashboard</h1>
       </header>
 
@@ -145,3 +145,9 @@ function AdminDashboard() {
 }
 
 export default AdminDashboard;
+
+
+
+
+
+
