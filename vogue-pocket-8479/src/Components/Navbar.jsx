@@ -73,7 +73,7 @@ export default function NavBar(){
     console.log("navbarB",isBooked);
 
     if(isAuth || isBooked){
-      axios.get('https://forevercare.onrender.com/users')
+      axios.get('https://vogue-pocket-data.onrender.com/users')
               .then((response) => { console.log("1st fetch",response.data)
                 const existingData = response.data;
                  userIndex = existingData.find(user => user.email === emailFromStore);
@@ -136,7 +136,7 @@ export default function NavBar(){
 
           <Box>
           <Link to="/">
-                <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x9j5guxzzgksruid010e.png" alt="Logo" width={"240px"} height={"200px"} />
+                <img src="Add_the_LOGO_HERE" alt="Logo" width={"240px"} height={"200px"} />
               </Link>
           </Box>
           
