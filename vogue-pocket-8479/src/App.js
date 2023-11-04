@@ -20,3 +20,13 @@ function App() {
 }
 
 export default App;
+
+
+/* 
+<Home />
+<About />
+<Work />
+<Testimonial />
+<Contact />
+<Footer />
+*/
