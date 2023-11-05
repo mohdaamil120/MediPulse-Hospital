@@ -10,9 +10,14 @@
     }
     
     .main-outer-container {
+    
     display: flex;
     /* position: relative; */
     margin-bottom: 100px;
+    gap: 10px;
+    /* border: 1px solid green; */
+    width: 1340px;
+    margin-left: -90px;
     }
     
     /* left container */
@@ -20,6 +25,7 @@
     .left-container {
     width: 25%;
     /* position: fixed; */
+    /* z-index: 1; */
     height: 100%;
     padding-bottom: 15px;
     left: 1%;
@@ -119,11 +125,12 @@
     
     .right-container {
     /* position: fixed; */
+    /* flex: 1; */
     left: 30%;
     top: 2.5%;
     right: 2.5%;
     height: 95vh;
-    /* overflow: auto; */
+    overflow: auto;
     }
     
     .right-container .info-new-user-button {
