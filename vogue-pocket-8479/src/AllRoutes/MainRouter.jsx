@@ -6,6 +6,7 @@ import Home from '../Components/Home'
 import Register from '../Pages/Register'
 import Doctors from '../Pages/Doctors'
 import AboutPage from '../Pages/AboutPage'
+import Contact from '../Pages/ContactPage'
 
 export default function MainRouter() {
   return (
@@ -16,7 +17,7 @@ export default function MainRouter() {
             <Route path='/login' element={<Register/>}/>
             <Route path='/doctor' element={<Doctors/>}/>
             <Route path='/about' element={<AboutPage/>}/>
-
+            <Route path='/contact' element={<Contact/>}/>
             <Route path='/admin' element={
                 <ChakraProvider>
                 <Admin/> 
