@@ -10,9 +10,14 @@
     }
     
     .main-outer-container {
+    
     display: flex;
-    position: relative;
+    /* position: relative; */
     margin-bottom: 100px;
+    gap: 10px;
+    /* border: 1px solid green; */
+    width: 1340px;
+    margin-left: -90px;
     }
     
     /* left container */

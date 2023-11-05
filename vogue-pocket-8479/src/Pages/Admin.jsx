@@ -10,7 +10,7 @@ import {Button} from "@chakra-ui/react";
 import AdminUser from "./AdminUser"
 import AdminDashboard from "./AdminDashboard"
 import AdminDoctor from "./AdminDoctor"
-import { getDoctors } from "../Redux/adminReducer/action"
+import { getDoctors, getUsers } from "../Redux/adminReducer/action"
 // import AdminDashboard from "./AdminDashboard"
 
 const initialState =  {
@@ -36,6 +36,7 @@ export default function Admin() {
 
     useEffect(()=>{
         dispatch(getDoctors)
+        dispatch(getUsers)
     })
 
     const handleDashboad = ()=>{

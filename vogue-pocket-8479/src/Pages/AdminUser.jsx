@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react'
-import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { Link } from 'react-router-dom'
-import { shallowEqual, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import "./Admin.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus,} from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +9,11 @@ import {Box, Button, Text} from "@chakra-ui/react";
 
 
 export default function AdminUser({setIsAddingHotel,searchQuery}) {
+
+  const users = useSelector(state => state.AdminReducer.users);
+  const dispatch = useDispatch();
+
+
   return (
     <div>
          <Box borderRadius="10px" bg="#212529">
@@ -62,20 +66,32 @@ export default function AdminUser({setIsAddingHotel,searchQuery}) {
                 </tr>
             </thead>
             <tbody className="body-container">
-                {/* {filteredUserData.map(user => (
+                {users.map(user => (
                     <tr key={user.id}>
                         <td>{user.id}</td>
-                        <td>{user.userName}</td>
+                        <td>{user.name}</td>
                         <td>{user.email}</td>
                         <td>{user.password}</td>
                         <td>
-                            <button className='edit' onClick={() => handleEditUser(user)}>Edit</button>
+                            <button className='edit' >Edit</button>
                         </td>
                         <td>
-                            <button className='delete' onClick={() => handleDeleteUser(user.id)}>Delete</button>
+                            <button className='delete' >Delete</button>
                         </td>
                     </tr>
-                ))} */}
+                ))}
+                {/* <tr>
+                        <td>Aamil</td>
+                        <td>aamil120</td>
+                        <td>mohdaamil120@gmail.com</td>
+                        <td>12345</td>
+                        <td>
+                            <button className='edit' >Edit</button>
+                        </td>
+                        <td>
+                            <button className='delete' >Delete</button>
+                        </td>
+                    </tr> */}
             </tbody>
             </table>
             <div className="pagination"></div>
