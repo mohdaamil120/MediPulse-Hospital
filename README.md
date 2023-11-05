@@ -49,7 +49,8 @@ Add the image here.
 
 [**`SignIn and SignUp`**](vogue-pocket-8479/src/Pages/Register.jsx): SignUp page where the customer can create a new account for fast, seamless booking of appointments. SignIn page where existing users can sign in so that their experience is uninterrupted.
 
-Add the image here.
+![image](https://github.com/mohdaamil120/vogue-pocket-8479/assets/95501800/d68c64db-821c-4a5f-908d-77cc00786cec)
+
 
 [**`About`**](vogue-pocket-8479/src/Pages/AboutPage.jsx): A page where we get all the details of our Hospital.
 
@@ -58,11 +59,13 @@ Add the image here.
 
 [**`Contact`**](vogue-pocket-8479/src/Pages/ContactPage.jsx): Contact details are present through which we can connect the Hospital. There are different ways like Address, Mobile number, and Email address. 
 
-Add the image here.
+![image](https://github.com/mohdaamil120/vogue-pocket-8479/assets/95501800/4d028cb8-0bb3-46f5-a7e5-9595c1a235b0)
+
 
 [**`Admin`**](vogue-pocket-8479/src/Pages/Admin.jsx): On the Admin page we can access all the doctors available for the appointment and can also Add or remove the doctors accordingly. There is a User section in which the admin can easily see the users and the related information and can remove the user.
 
-Add the image here.
+![image](https://github.com/mohdaamil120/vogue-pocket-8479/assets/95501800/268885ee-8193-42b4-90e1-9becd69fbd26)
+
 
 All the page of the website is ***`responsive`*** in nature for all devices.
 
