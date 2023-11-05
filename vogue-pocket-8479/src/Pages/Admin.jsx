@@ -14,20 +14,18 @@ import { getDoctors, getUsers } from "../Redux/adminReducer/action"
 // import AdminDashboard from "./AdminDashboard"
 
 const initialState =  {
+    id: 1,
     name: "",
-    location: "",
-    price: 0,
-    description: "",
-    category: "",
-    image: "",
-    rating: 0
+    email: "",
+    password: "",
+    userDetails: []
 }
 
 export default function Admin() {
     const dispatch = useDispatch()
     const [searchQuery, setSearchQuery] = useState('');
     const [isAddingHotel, setIsAddingHotel] = useState(false);
-    const [newHotel, setNewHotel] = useState(initialState);
+    const [newUser, setNewUser] = useState(initialState);
     
     const [dashboard, setDashboard] = useState(true)
     const [doctors, setDoctors] = useState(false)
