@@ -5,14 +5,15 @@ import styled from 'styled-components'
 
 const Doctors = () => {
   return (
-    <DIV style={{display:"flex"}}>
-    <Sidebar/>
+    <DIV>
     <List />
   </DIV>
   )
 }
 const DIV= styled.div`
 margin: 10%;
+display: flex;
+justify-content: space-evenly;
 `
 
 export default Doctors

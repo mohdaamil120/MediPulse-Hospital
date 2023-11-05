@@ -1,47 +1,59 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {styled} from "styled-components"
 
-const DoctorCard = ({ id, education,experience,image,language,location,name,speciality }) => {
+const DoctorCard = ({ id, education,experience,image,location,name,speciality,mobile,fees }) => {
+
+  const navi= useNavigate();
+
   return (
     <DIV>
+      <div className="main">
       <div className="image">
         <img src={image} />
-        {/* <h2>hello</h2> */}
       </div>
       <div className="detail">
-        <h2>{name}</h2>
-        <p>{education} (experience: {experience} years)</p><br />
+        <h3>{name}</h3>
+        <p>{education} (experience: {experience} years)</p>
         <h4>SPECIALIST</h4>
         <p>{speciality} </p>
         <h4>LOCATION</h4>
-        <p>{location}</p><br />
-        <p>number: </p>
-        <p>Fees:</p>
-        <div className="btn">
-          <button>Book An Appointment</button>
-          <button>Call</button>
-        </div>
+        <p>{location}</p>
+        <p>number:{mobile} </p>
+        <p>Fees:Rs. {fees} </p>
+        
       </div>
+      </div>
+     
+      <div className="btn">
+        {/* <button><Link to={`/payment`} style={{textDecoration:"none",color:"white"}}> Book An Appointment </Link></button> */}
+        <button onClick={()=>{navi("/payment")}}>Book</button>
+        
+           {/* <Link style={{textDecoration:"none",color:"white"}} to={}>Details</Link></button> */}
+           <button onClick={()=>{navi(`single-doctor/${id}`)}}>Details</button>
+        </div>
     </DIV>
   );
 };
 
 const DIV= styled.div`
 
-/* width: auto; */
- display: flex;
-/* justify-content: space-between; */
+width:100%;
+ /* display: flex; */
+ /* justify-content: space-between; */
+ border-radius:10px;
 margin: 5% 0 5% 0;
-padding: 2%;
+padding: 4%;
 align-items: center;
 box-shadow: rgba(14, 45, 25, 0.35) 0px 5px 15px;
 
+.main{
+  display: flex;
+}
 .image{
-    width: 300px;
-    height: 300px;
-
+    width: 200px;
+    height:200px;
     /* border: 2px solid pink; */
-
     img{
 /* background-color: red; */
 width: 100%;
@@ -57,13 +69,26 @@ overflow: hidden;
 
 .detail{
     margin: auto;
-    width: 50%;
+    width: 60%;
     /* border: 2px solid blue; */
    text-align: left;
    padding: 1%;
+   margin:0 4% 0 4%;
 }
 .btn{
-    width: 50;
+  margin: auto;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    button{
+      /* height: 40px; */
+      padding: 2%;
+      background-color: #1e601e;
+      border: none;
+     textDecoration:"none";
+     color:white
+
+    }
 }
 
 `
