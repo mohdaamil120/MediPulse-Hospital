@@ -53,7 +53,8 @@ Add the image here.
 
 [**`About`**](vogue-pocket-8479/src/Pages/AboutPage.jsx): A page where we get all the details of our Hospital.
 
-Add the image here.
+![image](https://github.com/mohdaamil120/vogue-pocket-8479/assets/95501800/e60fcfc0-5b15-4a8a-b01a-dd5389b6e41f)
+
 
 [**`Contact`**](vogue-pocket-8479/src/Pages/ContactPage.jsx): Contact details are present through which we can connect the Hospital. There are different ways like Address, Mobile number, and Email address. 
 
