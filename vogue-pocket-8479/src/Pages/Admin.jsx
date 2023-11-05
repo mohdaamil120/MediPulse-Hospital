@@ -9,6 +9,8 @@ import { faUser, faArrowLeft, faPlus, faChartBar, faUserMd, faSignOutAlt } from 
 import {Button} from "@chakra-ui/react";
 import AdminUser from "./AdminUser"
 import AdminDashboard from "./AdminDashboard"
+import AdminDoctor from "./AdminDoctor"
+import { getDoctors, getUsers } from "../Redux/adminReducer/action"
 // import AdminDashboard from "./AdminDashboard"
 
 const initialState =  {
@@ -30,6 +32,43 @@ export default function Admin() {
     const [dashboard, setDashboard] = useState(true)
     const [doctors, setDoctors] = useState(false)
     const [user, setUser] = useState(false)
+    
+
+    useEffect(()=>{
+        dispatch(getDoctors)
+        dispatch(getUsers)
+    })
+
+    const handleDashboad = ()=>{
+        if(dashboard){
+            return 
+        }
+        else {
+
+            setDashboard(prev => !prev)
+        }
+    }
+    
+    const handleUser = ()=>{
+        // setDashboard(prev => !prev)
+        if(user){
+            setDashboard(false)
+            setDoctors(false)
+        }
+        else{
+            setUser(prev => !prev)
+        }
+    }
+    const handleDoctors = ()=>{
+        // setDashboard(prev => !prev)
+        if(doctors){
+            setDashboard(false)
+            setUser(false)
+        }
+        else{
+            setDoctors(prev => !prev)
+        }
+    }
 
     // let {loginData,isAuth} = useSelector((store) => {
     //     return{
@@ -87,19 +126,19 @@ export default function Admin() {
         </div>
 
         <div className="admin-options">
-            <div className="user-card">
+            <div onClick={handleDashboad} className="user-card">
                 <div  className="user-icon">
                 <FontAwesomeIcon color='black' icon={faChartBar} /> 
                 </div>
-                <p> Dashboard </p>
+                <p > Dashboard </p>
             </div>
-            <div className="user-card">
+            <div  onClick={handleUser} className="user-card">
                 <div  className="user-icon">
                 <FontAwesomeIcon color='black' icon={faUser} /> 
                 </div>
                 <p> User</p>
             </div>
-            <div className="user-card">
+            <div onClick={handleDoctors} className="user-card">
                 <div  className="user-icon">
                 <FontAwesomeIcon color='black' icon={faUserMd} /> 
                 </div>
@@ -120,9 +159,15 @@ export default function Admin() {
 
         {/* <!-- right container --> */}
         
-        <AdminUser setIsAddingHotel={setIsAddingHotel} searchQuery={searchQuery}/>
-        {/* <AdminDashboard/> */}
-
+        {
+            dashboard ? (
+              <AdminDashboard/> 
+            ) : user ? (
+                <AdminUser setIsAddingHotel={setIsAddingHotel} searchQuery={searchQuery}/>
+            ) :(
+                <AdminDoctor setIsAddingHotel={setIsAddingHotel}/>
+            )
+        }
         {/* <!-- end of right container --> */}
 
        
