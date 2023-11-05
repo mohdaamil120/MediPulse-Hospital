@@ -1,14 +1,11 @@
+import React from 'react'
 
-import Doctors from './Pages/Doctors';
-import PaymentPage from './Pages/PaymentPage';
-import Singlecard from './Pages/Singlecard';
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-   
+    <div className='app'>
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
