@@ -27,6 +27,7 @@ const Home = () => {
           <button className="secondary-button">
             Book Now <FiArrowRight />{" "}
           </button>
+          
         </div>
         <div className="home-image-section">
           <img src={BannerImage} alt="" />
