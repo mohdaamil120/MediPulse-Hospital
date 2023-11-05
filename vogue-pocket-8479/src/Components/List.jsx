@@ -1,35 +1,89 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import { getList } from '../Redux/doctorReducer/action';
 import DoctorCard from './DoctorCard';
 import styled from 'styled-components';
+import { useSearchParams } from 'react-router-dom';
+import { Sidebar } from './Sidebar';
+import Pagination from './Pagination';
 
 const List = () => {
     const dispatch=useDispatch();
+    const [searchParams] = useSearchParams();
+    const [currentpage, setcurrentpage] = useState(1)
 
-    const {store,doctor}= useSelector((store)=>{
+    const {doctor}= useSelector((store)=>{
         console.log(store)
       return {
         doctor:store.doctorReducer.Doctor
       }
     })
 
-    console.log(doctor)
-useEffect(() => {
- dispatch(getList)
-}, [])
+    const totalPages= doctor.length/6;
+    console.log(totalPages)
 
-  return (
-    <DIV>
-        <h1>Doctor List</h1>
-        {doctor?.map((item)=>{
-            return <DoctorCard key={item.id} {...item}/>
-        })}
-    </DIV>
-  )
-}
+    let ParamsObj = {
+      params: {
+        speciality: searchParams.getAll("speciality"),
+        gender: searchParams.getAll("gender"),
+        location: searchParams.getAll("location"),
+        _sort: searchParams.get("order") && "fees",
+        _order: searchParams.get("order"),
+        page: currentpage,
+        limit: 6,
+      }
+    };
+  
+    useEffect(() => {
+      dispatch(getList(ParamsObj));
+    }, [searchParams,currentpage]);
 
-const DIV = styled.div`
-  width  :80% ;
-`
+    return (
+      <DIV>
+        <div className="Box-1">
+          <Sidebar/>
+          <div
+            className="Box-2"
+          >
+            {doctor?.length > 0 &&
+             doctor.map((item) => <DoctorCard 
+             key={item.id} {...item}/>)}
+          </div>
+        </div>
+        <Pagination totalPages={totalPages} setcurrentpage={setcurrentpage} currentpage={currentpage} />
+      </DIV>
+    );
+  };
+  const DIV = styled.div`
+  .Box-1{
+    display:flex;
+    justify-content: space-between;
+  }
+  .Box-2{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    width:80%;
+    gap:10%;
+    margin:auto;
+  }
+  @media screen and (max-width: 768px) {
+  
+      .Box-2 {
+        grid-template-columns: repeat(1, 1fr);
+        width:100%;
+        gap:20px;
+        margin-left:10%;
+      }
+    }
+  @media screen and (max-width: 480px) {
+    .Box-1{
+      flex-direction:column;
+    }
+      .Box-2 {
+        grid-template-columns: repeat(1, 1fr);
+        width:100%;
+        padding:5%;
+      }
+    }
+  `;
 export default List

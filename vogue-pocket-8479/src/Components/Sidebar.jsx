@@ -4,16 +4,16 @@ import { useSearchParams } from "react-router-dom";
 
 export const Sidebar = () => {
 const [view, setview] = useState(false);
+const [view2, setview2] = useState(false);
+const [view3, setview3] = useState(false);
+const [view4, setview4] = useState(false);
 
 const [searchParams, setSearchParams] = useSearchParams();
 
+//filter for speciality//
 const [speciality, setSpeciality] = useState(
   searchParams.getAll("speciality") || []
 );
-
-// const [gender, setgender] = useState(
-//   searchParams.getAll("gender") || []
-// );
 
 const handleSpecility = (e) => {
   const { value } = e.target;
@@ -26,17 +26,6 @@ const handleSpecility = (e) => {
   setSpeciality(newspeciality);
 };
 
-// const handleGender = (e) => {
-//   const { value } = e.target;
-//   let newgender= [...gender];
-//   if (newgender.includes(value)) {
-//     newgender= newgender.filter((item) => item != value);
-//   } else {
-//     newgender.push(value);
-//   }
-//   setgender(newgender);
-// };
-
 const handleClick=()=>{
   if(view===true){
     setview(false);
@@ -47,21 +36,95 @@ const handleClick=()=>{
   }
 }
 
+//filter for gender//
+const [gender, setgender] = useState(
+  searchParams.getAll("gender") || []
+);
+
+const handleGender = (e) => {
+  const { value } = e.target;
+  let newgender= [...gender];
+  if (newgender.includes(value)) {
+    newgender= newgender.filter((item) => item != value);
+  } else {
+    newgender.push(value);
+  }
+  setgender(newgender);
+};
+
+const handleClick2=()=>{
+  if(view2===true){
+    setview2(false);
+    // alert("undone")
+  }else{
+    setview2(true);
+    // alert("done")
+  }
+}
+
+//filter for location//
+const [location, setlocation] = useState(
+  searchParams.getAll("gender") || []
+);
+
+const handleLocation = (e) => {
+  const { value } = e.target;
+  let newlocation= [...gender];
+  if (newlocation.includes(value)) {
+    newlocation= newlocation.filter((item) => item != value);
+  } else {
+    newlocation.push(value);
+  }
+  setlocation(newlocation);
+};
+const handleClick3=()=>{
+  if(view3===true){
+    setview3(false);
+    // alert("undone")
+  }else{
+    setview3(true);
+    // alert("done")
+  }
+}
+
+//sort by fees///
+const [order, setOrder] = useState(searchParams.get("order") || "");
+
+const handleOrder = (e) => {
+  const { value } = e.target;
+  setOrder(value);
+};
+
+const handleClick4=()=>{
+  if(view4===true){
+    setview4(false);
+    // alert("undone")
+  }else{
+    setview4(true);
+    // alert("done")
+  }
+}
+
+
+// ///
 useEffect(() => {
   let param = {
     speciality,
+    gender,
+    location
   };
-  // order && (param.order = order);
-  setSearchParams(param);
-}, [speciality]);
 
+  order && (param.order = order);
+  setSearchParams(param);
+}, [speciality,gender,location,order]);
 
   return (
-    <DIV view={view}>
-      <h3>Filter</h3>
+    <DIV view={view} view2={view2} view4={view4} view3={view3}  >
+    <div style={{backgroundColor:"green",height:"50px",width:"100%",alignContent:"center"}}><h3 style={{margin:"auto",display:"flex",justifyContent:"center",paddingTop:"10px"}} >Filter</h3></div>
+      
       <hr />
-      <div className="box" onClick={handleClick}>
-       <h3>Specialist  </h3>
+      <div className="box" >
+       <h3 onClick={handleClick}>Specialist  </h3>
       <div className="opt" >
         
         <p> <input data-testid="CARDIOLOGY" type="checkbox" value={"CARDIOLOGY"} onChange={handleSpecility} checked={speciality.includes("CARDIOLOGY")}/>CARDIOLOGY</p>
@@ -76,17 +139,52 @@ useEffect(() => {
         <br />
       </div>
       <hr />
-      <h3>Gender  </h3>
-      {/* <div className="opt" >
+      <h3 onClick={handleClick2}>Gender  </h3>
+      <div className="opt2" >
         
-        <p> <input data-testid="female" type="checkbox" value={"female"} onChange={handleGender} checked={speciality.includes("female")}/>FEMALE</p>
+        <p> <input data-testid="female" type="checkbox" value={"female"} onChange={handleGender} checked={gender.includes("female")}/>FEMALE</p>
     
-        <p><input data-testid="male" type="checkbox" value={"male"} onChange={handleGender} checked={speciality.includes("male")}/>MALE</p>
+        <p><input data-testid="male" type="checkbox" value={"male"} onChange={handleGender} checked={gender.includes("male")}/>MALE</p>
         <br/>
-      </div> */}
+      </div>
+<hr />
+      <h3 onClick={handleClick3}>Location</h3>
+      <div className="opt3" >
+        
+        <p> <input data-testid="BENGALURU" type="checkbox" value={"BENGALURU"} onChange={handleLocation} checked={location.includes("BENGALURU")}/>BENGALURU</p>
+    
+        <p><input data-testid="HYDERABAD" type="checkbox" value={"HYDERABAD"} onChange={handleLocation} checked={location.includes("HYDERABAD")}/>HYDERABAD</p>
 
+        
+        <p><input data-testid="CHENNAI" type="checkbox" value={"CHENNAI"} onChange={handleLocation} checked={location.includes("CHENNAI")}/>CHENNAI</p>
+        <br/>
+      </div>
+      <hr />
+      </div>
+      <div style={{backgroundColor:"green",height:"50px",width:"100%",alignContent:"center",cursor:"pointer",backgroundColor:"green"}} onClick={handleClick4} ><h3 style={{margin:"auto",display:"flex",justifyContent:"center",paddingTop:"10px"}}  >Sort by</h3></div>
+     
+      <div onChange={handleOrder} className="opt4">
+        <input
+          data-testid="sort-asc"
+          type="radio"
+          name="sort"
+          value={"asc"}
+          defaultChecked={order === "asc"}
+        />
+        <label>Ascending</label>
+        <br />
+        <input
+          data-testid="sort-desc"
+          type="radio"
+          name="sort"
+          value={"desc"}
+          defaultChecked={order === "desc"}
+        />
+        <label>Descending</label>
       </div>
       <hr/>
+
+      
     
       {/* <h3>Paginate</h3>
       <PAGE>
@@ -108,24 +206,57 @@ useEffect(() => {
 // `;
 
 const DIV = styled.div`
+/* position: fixed; */
  word-wrap: normal;
-  width: 30%;
-  border-right: 1px solid gray;
+ height: 550px;
+  width: 300px;
   text-align: left;
- margin: 5%;
-  /* background-color: red; */
+ margin: 4%;
   border: 2px solid green;
-  /* padding: 1%; */
+  padding: 1%;
+border-radius: 10px;
 
+@media (max-width: 767px) {
+    width: 80%; /* Full width on small screens */
+    margin: 0;
+    flex-direction:column;
+  }
+
+  @media (min-width: 768px) {
+    width: 250px; /* Adjust width for tablets */
+  }
+
+  @media (min-width: 992px) {
+    width: 350px; /* Adjust width for larger desktop screens */
+  }
+
+  @media (min-width: 1200px) {
+    width: 400px; /* Adjust width for bigger screens (e.g., large desktops) */
+  }
+
+hr{
+border: 1px solid green;
+}
   .box{
     /* border: 1px solid blue; */
     cursor: pointer;
-  
+  background-color: white;
   }
 .opt{
   display:${(props)=> (props.view ? "block": "none")};
 }
 
+.opt2{
+  display:${(props)=> (props.view2 ? "block": "none")};
+}
+
+.opt3{
+  display:${(props)=> (props.view3 ? "block": "none")};
+}
+
+.opt4{
+  display:${(props)=> (props.view4 ? "block": "none")};
+}
   label {
     margin-left: 5px;
   }
