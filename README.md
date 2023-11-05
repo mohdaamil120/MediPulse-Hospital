@@ -40,7 +40,8 @@ MediPulse is designed to be user-friendly and easy to navigate. The website incl
 
 [**`Home`**](vogue-pocket-8479/src/Pages/Home.jsx): Landing Page with the details about our services and different departments and doctors. There is a Testimonial section that helps us know about the services.
 
-Add the image here.
+![image](https://github.com/mohdaamil120/vogue-pocket-8479/assets/95501800/0fa776e3-32b0-4b6c-a565-4abf6d1f3da1)
+
 
 [**`Doctors`**](vogue-pocket-8479/src/Pages/Doctors.jsx): On this page there is a list of doctors and we can find appropriate doctors by applying the filters available. We can book the appointment or have an on-call consultation.
 
