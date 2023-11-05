@@ -55,7 +55,6 @@ const Navbar = () => {
         {isAuth ? (
            <Link to="/profile">
             <Button
-            // onClick={logout}
               bgColor="#009E60"
               color="white"
               className="navbar-button"

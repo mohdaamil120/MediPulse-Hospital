@@ -135,7 +135,7 @@ nav {
 }
 .secondary-button {
   padding: 1rem 2.5rem;
-  background-color: #fe9e0d;
+  background-color: #5fe985;
   outline: none;
   border: none;
   border-radius: 5rem;
@@ -179,7 +179,7 @@ nav {
 }
 .primary-subheading {
   font-weight: 700;
-  color: #fe9e0d;
+  color: #5fe985;
   font-size: 1.15rem;
 }
 .about-buttons-container {
@@ -293,7 +293,7 @@ nav {
 .testimonials-stars-container svg {
   margin: 0rem 0.25rem;
   font-size: 1.5rem;
-  color: #fe9e0d;
+  color: #5fe985;
 }
 .testimonial-section-bottom h2 {
   margin-top: 1.5rem;

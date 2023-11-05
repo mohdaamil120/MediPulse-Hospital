@@ -8,6 +8,7 @@ import Doctors from '../Pages/Doctors'
 import AboutPage from '../Pages/AboutPage'
 import Login from '../Pages/Login'
 import Profile from '../Pages/Profile'
+import Contact from '../Pages/ContactPage'
 
 export default function MainRouter() {
   return (
@@ -20,6 +21,7 @@ export default function MainRouter() {
             <Route path='/doctor' element={<Doctors/>}/>
             <Route path='/about' element={<AboutPage/>}/>
             <Route path="/login" element={<Login />} />
+            <Route path='/contact' element={<Contact/>}/>
             <Route path='/admin' element={
                 <ChakraProvider>
                 <Admin/> 
