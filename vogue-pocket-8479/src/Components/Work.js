@@ -24,8 +24,8 @@ const Work = () => {
   return (
     <div className="work-section-wrapper">
       <div className="work-section-top">
-        <p className="primary-subheading">Work</p>
-        <h1 className="primary-heading">Our Diffrent Departments</h1>
+        <h2 className="primary-subheading">Work</h2>
+        <h3 className="primary-heading">Our Diffrent Departments</h3>
         <p className="primary-text">
         Providing high-quality, trusted, and accessible healthcare is our reason for being
         </p>

@@ -13,10 +13,10 @@ const About = () => {
         <img src={AboutBackgroundImage} alt="" />
       </div>
       <div className="about-section-text-container">
-        <p className="primary-subheading">About</p>
-        <h1 className="primary-heading">
+        <h2 className="primary-subheading">About</h2>
+        <h3 className="primary-heading">
           Qulity Healthcare Made Simple
-        </h1>
+        </h3>
         <p className="primary-text">
           Our Mission
         </p>
