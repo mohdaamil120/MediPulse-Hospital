@@ -46,7 +46,7 @@ const AdminDoctor = ({setIsAddingHotel}) => {
                <input
                 style={{width:"100%", height:"50px",paddingLeft:"20px", borderRadius:"50px", fontWeight:"bold",backgroundColor:"#EDEFF1"}}
                 type="text"
-                placeholder="Search user..."
+                placeholder="Search doctor..."
                 id="search-user-data"
                 // onChange={handleSearchInputChange}
                />
