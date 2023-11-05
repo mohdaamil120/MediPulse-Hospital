@@ -1,119 +1,164 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { URL } from "./Login"
 import {
   Box,
   Button,
-  Heading,
-  VStack,
   FormControl,
+  FormLabel,
   Input,
-  InputGroup,
-  InputRightElement,
-  IconButton,
-  Select, // Added for the gender input
+  Text,
 } from "@chakra-ui/react";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"; // Import icons for show/hide password
+
+const initialData = {
+  name: "",
+  l_name: "",
+  email: "",
+  password: "",
+  token: "",
+  admin: false,
+};
 
 const Register = () => {
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [userData, setUserData] = useState(initialData);
+  const navigate = useNavigate();
 
-  const handlePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prev) => ({
+      ...prev,
+      [name]: value,
+      token:
+        prev.name.slice(3) +
+        Math.floor(Math.random() * 99999) +
+        prev.l_name.slice(3),
+    }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios({
+      method: "post",
+      url: `${URL}/users`, // Make sure you define URL or use the actual URL here
+      data: userData,
+    })
+      .then((r) => navigate("/login"))
+      .catch((error) => console.log(error));
+  };
+
+  // return (
+  //   <Box p={15} width={200} padding={20} >
+  //     <Text fontSize="2xl" fontWeight="bold" mb={4}>
+  //       Register
+  //     </Text>
+  //     <FormControl>
+  //       <FormLabel>First Name</FormLabel>
+  //       <Input
+  //         name="name"
+  //         type="text"
+  //         placeholder="First Name"
+  //         onChange={handleChange}
+  //       />
+  //     </FormControl>
+  //     <FormControl mt={4}>
+  //       <FormLabel>Last Name</FormLabel>
+  //       <Input
+  //         name="l_name"
+  //         type="text"
+  //         placeholder="Last Name"
+  //         onChange={handleChange}
+  //       />
+  //     </FormControl>
+  //     <FormControl mt={4}>
+  //       <FormLabel>Email</FormLabel>
+  //       <Input
+  //         name="email"
+  //         type="email"
+  //         placeholder="Email"
+  //         onChange={handleChange}
+  //       />
+  //     </FormControl>
+  //     <FormControl mt={4}>
+  //       <FormLabel>Password</FormLabel>
+  //       <Input
+  //         name="password"
+  //         type="password"
+  //         placeholder="Password"
+  //         onChange={handleChange}
+  //       />
+  //     </FormControl>
+  //     <Button
+  //       mt={4}
+  //       colorScheme="blue"
+  //       onClick={handleSubmit}
+  //       size="md"
+  //     >
+  //       Register
+  //     </Button>
+  //     <Text mt={2}>
+  //       Already have an account?{" "}
+  //       <Link to="/login" color="blue.500">
+  //         Login
+  //       </Link>
+  //     </Text>
+  //   </Box>
+  // );
   return (
-    <>
-      <Box
-        p={8}
-        boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
-        w={{ base: "70%", md: "380px" }}
-        margin="0 auto"
-        mt="30px"
-        mb="20px"
-        height={"500px"}
+    <Box p={6} width={400} margin="0 auto" padding="20px">
+      <Text fontSize="2xl" fontWeight="bold" mb={4}>
+        Enter your credentials to Register
+      </Text>
+      <FormControl>
+        <Input
+          name="name"
+          type="text"
+          placeholder="First Name"
+          onChange={handleChange}
+        />
+      </FormControl>
+      <FormControl mt={4}>
+        {/* <FormLabel>Last Name</FormLabel> */}
+        <Input
+          name="l_name"
+          type="text"
+          placeholder="Last Name"
+          onChange={handleChange}
+        />
+      </FormControl>
+      <FormControl mt={4}>
+        <Input
+          name="email"
+          type="email"
+          placeholder="Email"
+          onChange={handleChange}
+        />
+      </FormControl>
+      <FormControl mt={4}>
+        <Input
+          name="password"
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+        />
+      </FormControl>
+      <Button
+        mt={4}
+        colorScheme="blue"
+        onClick={handleSubmit}
+        size="md"
       >
-        <Heading textAlign="center" size="lg">
-          Sign up
-        </Heading>
-        <form>
-          <VStack spacing={6} mt={8} align="left">
-            <FormControl>
-              <Input
-                required
-                name="f_name"
-                type="text"
-                placeholder="First Name"
-              />
-            </FormControl>
-            <FormControl>
-              <Input
-                required
-                name="l_name"
-                type="text"
-                placeholder="Last Name"
-              />
-            </FormControl>
-            <FormControl>
-              <Input required name="email" type="email" placeholder="Email" />
-            </FormControl>
-            <FormControl>
-              <Input
-                required
-                name="age"
-                type="number" // Input for age
-                placeholder="Age"
-              />
-            </FormControl>
-            <FormControl>
-              <Select
-                required
-                name="gender"
-                placeholder="Select Gender" // Dropdown for gender
-              >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </Select>
-            </FormControl>
-            <FormControl>
-              <InputGroup>
-                <Input
-                  required
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Password"
-                />
-                <InputRightElement width="4.5rem">
-                  <IconButton
-                    h="1.75rem"
-                    size="sm"
-                    onClick={handlePasswordVisibility}
-                    icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
-                  />
-                </InputRightElement>
-              </InputGroup>
-            </FormControl>
-          </VStack>
-          <Box mt="40px" textAlign="center">
-            <Button
-              type="submit"
-              w="150px"
-              bg="black"
-              color="#fff"
-              _hover={{ bg: "yellow.500", color: "#000" }}
-            >
-              SUBMIT
-            </Button>
-          </Box>
-          <Box mt="20px" textAlign="center">
-            <Link to="/login" color="blue.500">
-              Log in
-            </Link>
-          </Box>
-        </form>
-      </Box>
-    </>
+        Register
+      </Button>
+      <Text mt={2}>
+        Already have an account?{" "}
+        <Link to="/login" color="blue.500">
+          Login
+        </Link>
+      </Text>
+    </Box>
   );
 };
 
 export default Register;
+
