@@ -19,7 +19,7 @@ A team of 5 members created this project over  the course of six days.
 5. [Piyush Sharma ](https://github.com/pspiyush130)
 
 ### Deployed Link
-???? Enter the deployed link here ?????
+???? Enter the deployed link here ????
 
 ### JSON Server
 https://vogue-pocket-data.onrender.com
@@ -38,11 +38,11 @@ https://vogue-pocket-data.onrender.com
 
 MediPulse is designed to be user-friendly and easy to navigate. The website includes the following pages:
 
-[**`Home`**](vogue-pocket-8479/src/Pages/Home.jsx): Landing Page with the details about our services and different departments and doctors. There is an Testimonial section that helps us know about the servies.
+[**`Home`**](vogue-pocket-8479/src/Pages/Home.jsx): Landing Page with the details about our services and different departments and doctors. There is a Testimonial section that helps us know about the services.
 
 Add the image here.
 
-[**`Doctors`**](vogue-pocket-8479/src/Pages/Doctors.jsx): On this page there is a list of doctors and we can find appropriate doctors by applying the filters available.
+[**`Doctors`**](vogue-pocket-8479/src/Pages/Doctors.jsx): On this page there is a list of doctors and we can find appropriate doctors by applying the filters available. We can book the appointment or have an on-call consultation.
 
 Add the image here.
 
@@ -54,7 +54,7 @@ Add the image here.
 
 Add the image here.
 
-[**`Contact`**](vogue-pocket-8479/src/Pages/ContactPage.jsx): Contact details are present through which we can connect the Hospital.
+[**`Contact`**](vogue-pocket-8479/src/Pages/ContactPage.jsx): Contact details are present through which we can connect the Hospital. There are different ways like Address, Mobile number, and Email address. 
 
 Add the image here.
 
@@ -72,5 +72,5 @@ Contributions to vogue-pocket-8479 are welcome! If you would like to contribute,
 + Make your changes and commit them with clear commit messages
 + Push your changes to your fork
 + Create a pull request with a clear description of your changes
-+ Credits will be given on the work done. 
++ Credits will be given for the work done. 
 
