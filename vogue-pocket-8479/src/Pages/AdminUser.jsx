@@ -80,18 +80,7 @@ export default function AdminUser({setIsAddingHotel,searchQuery}) {
                         </td>
                     </tr>
                 ))}
-                {/* <tr>
-                        <td>Aamil</td>
-                        <td>aamil120</td>
-                        <td>mohdaamil120@gmail.com</td>
-                        <td>12345</td>
-                        <td>
-                            <button className='edit' >Edit</button>
-                        </td>
-                        <td>
-                            <button className='delete' >Delete</button>
-                        </td>
-                    </tr> */}
+               
             </tbody>
             </table>
             <div className="pagination"></div>
