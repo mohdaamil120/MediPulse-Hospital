@@ -45,6 +45,8 @@ MediPulse is designed to be user-friendly and easy to navigate. The website incl
 
 [**`Doctors`**](vogue-pocket-8479/src/Pages/Doctors.jsx): On this page there is a list of doctors and we can find appropriate doctors by applying the filters available. We can book the appointment or have an on-call consultation.
 
+![image](C:\Users\HP\Desktop\Untitled.png)
+
 Add the image here.
 
 [**`SignIn and SignUp`**](vogue-pocket-8479/src/Pages/Register.jsx): SignUp page where the customer can create a new account for fast, seamless booking of appointments. SignIn page where existing users can sign in so that their experience is uninterrupted.
