@@ -9,6 +9,8 @@ import AboutPage from '../Pages/AboutPage'
 import Login from '../Pages/Login'
 import Profile from '../Pages/Profile'
 import Contact from '../Pages/ContactPage'
+import PaymentPage from '../Pages/PaymentPage'
+import Singlecard from '../Pages/Singlecard'
 
 export default function MainRouter() {
   return (
@@ -27,7 +29,8 @@ export default function MainRouter() {
                 <Admin/> 
                 </ChakraProvider>
             }/>
-           
+           <Route path='/paymentpage' element={<PaymentPage/>}/>
+           <Route path='/singlecard/:id' element={<Singlecard/>}/>
         </Routes>
         
     </div>

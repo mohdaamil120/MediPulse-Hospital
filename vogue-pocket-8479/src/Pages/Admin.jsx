@@ -14,7 +14,6 @@ import { getDoctors, getUsers } from "../Redux/adminReducer/action"
 // import AdminDashboard from "./AdminDashboard"
 
 const initialState =  {
-    id: 1,
     name: "",
     email: "",
     password: "",
@@ -24,7 +23,7 @@ const initialState =  {
 export default function Admin() {
     const dispatch = useDispatch()
     const [searchQuery, setSearchQuery] = useState('');
-    const [isAddingHotel, setIsAddingHotel] = useState(false);
+    const [isAddingUser, setIsAddingUser] = useState(false);
     const [newUser, setNewUser] = useState(initialState);
     
     const [dashboard, setDashboard] = useState(true)
@@ -35,7 +34,7 @@ export default function Admin() {
     useEffect(()=>{
         dispatch(getDoctors)
         dispatch(getUsers)
-    })
+    },[isAddingUser])
 
     const handleDashboad = ()=>{
         if(dashboard){
@@ -161,9 +160,9 @@ export default function Admin() {
             dashboard ? (
               <AdminDashboard/> 
             ) : user ? (
-                <AdminUser setIsAddingHotel={setIsAddingHotel} searchQuery={searchQuery}/>
+                <AdminUser setIsAddingUser={setIsAddingUser} searchQuery={searchQuery}/>
             ) :(
-                <AdminDoctor setIsAddingHotel={setIsAddingHotel}/>
+                <AdminDoctor setIsAddingUser={setIsAddingUser}/>
             )
         }
         {/* <!-- end of right container --> */}

@@ -1,4 +1,4 @@
-import { DOCTORS_FAILURE, DOCTORS_REQUEST, GET_DOCTORS, GET_USERS } from "./actionTypes"
+import { DOCTORS_FAILURE, DOCTORS_REQUEST, GET_DOCTORS, GET_USERS, POST_USER } from "./actionTypes"
 
 const initialState = {
     isLoading:false,
@@ -17,6 +17,8 @@ export const reducer = (state=initialState,{type,payload})=>{
             return {...state, isError:false, isLoading:false, doctors:payload}
         case GET_USERS:
             return {...state, isError:false, isLoading:false, users:payload}
+        case POST_USER:
+            return {...state, isLoading:false, isError:false, users:payload}    
         default:
            return state
     }

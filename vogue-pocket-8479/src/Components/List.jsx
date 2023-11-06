@@ -60,9 +60,7 @@ const List = () => {
     justify-content: space-between;
   }
   .Box-2{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    width:80%;
+    width:100%;
     gap:10%;
     margin:auto;
   }

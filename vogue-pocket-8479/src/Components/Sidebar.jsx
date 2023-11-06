@@ -120,7 +120,7 @@ useEffect(() => {
 
   return (
     <DIV view={view} view2={view2} view4={view4} view3={view3}  >
-    <div style={{backgroundColor:"green",height:"50px",width:"100%",alignContent:"center"}}><h3 style={{margin:"auto",display:"flex",justifyContent:"center",paddingTop:"10px"}} >Filter</h3></div>
+    <div style={{backgroundColor:"#4DCA6A",height:"50px",width:"100%",alignContent:"center", borderRadius:"5%"}}><h3 style={{margin:"auto",display:"flex",justifyContent:"center",paddingTop:"10px"}} >Filter</h3></div>
       
       <hr />
       <div className="box" >
@@ -161,7 +161,7 @@ useEffect(() => {
       </div>
       <hr />
       </div>
-      <div style={{backgroundColor:"green",height:"50px",width:"100%",alignContent:"center",cursor:"pointer",backgroundColor:"green"}} onClick={handleClick4} ><h3 style={{margin:"auto",display:"flex",justifyContent:"center",paddingTop:"10px"}}  >Sort by</h3></div>
+      <div style={{backgroundColor:"#4DCA6A",height:"50px",width:"100%",alignContent:"center",cursor:"pointer", borderRadius:"5%"}} onClick={handleClick4} ><h3 style={{margin:"auto",display:"flex",justifyContent:"center",paddingTop:"10px"}}  >Sort by</h3></div>
      
       <div onChange={handleOrder} className="opt4">
         <input
@@ -212,8 +212,11 @@ const DIV = styled.div`
   width: 300px;
   text-align: left;
  margin: 4%;
-  border: 2px solid green;
-  padding: 1%;
+ border:none;
+ box-shadow: rgba(14, 45, 25, 0.35) 0px 5px 15px;
+  /* border: 2px solid green; */
+
+  padding: 2%;
 border-radius: 10px;
 
 @media (max-width: 767px) {

@@ -13,11 +13,11 @@ const DoctorCard = ({ id, education,experience,image,location,name,speciality,mo
         <img src={image} />
       </div>
       <div className="detail">
-        <h3>{name}</h3>
+        <h3 style={{color:"#145723"}}>{name}</h3>
         <p>{education} (experience: {experience} years)</p>
-        <h4>SPECIALIST</h4>
+        <h4 style={{color:"#145723"}}>SPECIALIST</h4>
         <p>{speciality} </p>
-        <h4>LOCATION</h4>
+        <h4 style={{color:"#145723"}}>LOCATION</h4>
         <p>{location}</p>
         <p>number:{mobile} </p>
         <p>Fees:Rs. {fees} </p>
@@ -27,10 +27,10 @@ const DoctorCard = ({ id, education,experience,image,location,name,speciality,mo
      
       <div className="btn">
         {/* <button><Link to={`/payment`} style={{textDecoration:"none",color:"white"}}> Book An Appointment </Link></button> */}
-        <button onClick={()=>{navi("/payment")}}>Book</button>
+        <button onClick={()=>{navi("/paymentpage")}}>Book Appointment</button>
         
            {/* <Link style={{textDecoration:"none",color:"white"}} to={}>Details</Link></button> */}
-           <button onClick={()=>{navi(`single-doctor/${id}`)}}>Details</button>
+           <button onClick={()=>{navi(`/singlecard/${id}`)}}>Details</button>
         </div>
     </DIV>
   );
@@ -83,13 +83,13 @@ overflow: hidden;
     button{
       /* height: 40px; */
       padding: 2%;
-      background-color: #1e601e;
+      background-color:#4DCA6A;
       border: none;
-     textDecoration:"none";
      color:white
-
+   
     }
 }
+
 
 `
 export default DoctorCard;

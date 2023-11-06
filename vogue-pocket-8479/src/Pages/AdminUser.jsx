@@ -1,17 +1,45 @@
-import React,{useState,useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import "./Admin.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus,} from '@fortawesome/free-solid-svg-icons';
-import {Box, Button, Text} from "@chakra-ui/react";
+import { faPlus} from '@fortawesome/free-solid-svg-icons';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Input ,Box, Button, Text} from "@chakra-ui/react";
+import { addNewUser, getUsers } from '../Redux/adminReducer/action';
 
 
 
-export default function AdminUser({setIsAddingHotel,searchQuery}) {
+export default function AdminUser({setIsAddingUser,searchQuery}) {
 
   const users = useSelector(state => state.AdminReducer.users);
   const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newUserData, setNewUserData] = useState({ name: '', email: '', password: '' });
+
+  const addUser= () => {
+    // Send the newUserData to your API (you need to implement this)
+    // After successfully adding the user, you can close the modal and update the user list
+    dispatch(addNewUser(newUserData))
+    setIsAddingUser(prev=>!prev)
+
+    closeModal();
+  };
+  
+
+  const openModal = () => {
+
+    setIsModalOpen(true);
+  };
+  
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewUserData((prevData) => ({ ...prevData, [name]: value }));
+  };
+  
 
 
   return (
@@ -24,12 +52,12 @@ export default function AdminUser({setIsAddingHotel,searchQuery}) {
         <div className="right-container">
         <div className="info-new-user-button">
             <h1>User Details</h1>
-            <Button onClick={() => setIsAddingHotel(true)}
+            <Button onClick={openModal}
             colorScheme="teal"
             leftIcon={<FontAwesomeIcon icon={faPlus} />}
             >
-            <div className="inside-button">
-               <Link style={ {color:"white",textDecoration:"none", paddingTop:"15px"}} to={"/addhotel"}> <p>Add New User</p></Link>
+            <div   className="inside-button"
+               style={ {color:"white",textDecoration:"none", paddingTop:"15px"}} > <p>Add New User</p>
             </div>
             </Button>
         </div>
@@ -86,6 +114,50 @@ export default function AdminUser({setIsAddingHotel,searchQuery}) {
             <div className="pagination"></div>
         </div>
         </div>
+        
+            <div>
+
+                {/* Chakra UI Modal */}
+                <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Add New User</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                    <Input
+                        type="text"
+                        name="name"
+                        value={newUserData.name}
+                        onChange={handleInputChange}
+                        placeholder="Name"
+                    />
+                    <Input
+                        type="text"
+                        name="email"
+                        value={newUserData.email}
+                        onChange={handleInputChange}
+                        placeholder="Email"
+                    />
+                    <Input
+                        type="text"
+                        name="password"
+                        value={newUserData.password}
+                        onChange={handleInputChange}
+                        placeholder="Password"
+                    />
+                    </ModalBody>
+                    <ModalFooter>
+                    <Button colorScheme="teal" mr={3} onClick={addUser}>
+                        Add User
+                    </Button>
+                    <Button onClick={closeModal}>Cancel</Button>
+                    </ModalFooter>
+                </ModalContent>
+                </Modal>
+            </div>
+          
+   
     </div>
+
   )
 }

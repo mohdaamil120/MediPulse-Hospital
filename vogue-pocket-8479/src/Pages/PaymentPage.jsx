@@ -27,6 +27,7 @@ const PaymentPage = () => {
 
   return paymentData.isPaymentSuccessful ? (
     <DIV>
+
       <div className='main'>
       <h1>Payment Successful!</h1>
       </div>
@@ -35,8 +36,9 @@ const PaymentPage = () => {
   ) : (
     <DIV>
       <div className='main'>
-      <h1>Payment Page</h1>
+      <h1>Payment Page </h1>
       <form onSubmit={handleSubmit}>
+
         <div>
           <label>Card Number:</label>
           <input
@@ -84,9 +86,13 @@ const PaymentPage = () => {
 const DIV= styled.div`
 margin: auto;
 height: 100%;
-  background-image: url("https://t4.ftcdn.net/jpg/06/30/07/51/240_F_630075147_hFX9sPPOcr5OmRfSsrho5dwzYcUCnmyf.jpg"); /* Set the background image */
-  background-size: cover; 
-  background-repeat: no-repeat;
+box-shadow: rgba(14, 45, 25, 0.35) 0px 5px 15px;
+/* background-color:#a9ffbd; */
+border:2px solid  #4DCA6A;
+padding: 5%;
+  /* background-image: url("https://t4.ftcdn.net/jpg/06/30/07/51/240_F_630075147_hFX9sPPOcr5OmRfSsrho5dwzYcUCnmyf.jpg"); /* Set the background image */
+  /* background-size: cover; 
+  background-repeat: no-repeat; */ */
 
 .main{
    display: flex;
@@ -132,7 +138,7 @@ height: 100%;
   input{
     padding: 10px;
   margin: 5px ;
-  border: 2px solid white;
+  border:2px solid  #4DCA6A;
   border-radius: 5px;
   outline: none;
   width: auto;
@@ -147,14 +153,14 @@ height: 100%;
   button{
     padding: 10px;
   margin: 10px 0;
-  background-color: #007bff;
-  color: #fff;
+  background-color:#4DCA6A ;
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 
   &:hover {
-    background-color: #0056b3;
+    background-color:#145723 ;
   }
   }
 `
