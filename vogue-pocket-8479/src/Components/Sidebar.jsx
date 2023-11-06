@@ -161,7 +161,7 @@ useEffect(() => {
       </div>
       <hr />
       </div>
-      <div style={{backgroundColor:"#4DCA6A",height:"50px",width:"100%",alignContent:"center",cursor:"pointer", borderRadius:"5%"}} onClick={handleClick4} ><h3 style={{margin:"auto",display:"flex",justifyContent:"center",paddingTop:"10px"}}  >Sort by</h3></div>
+      <div style={{backgroundColor:"#4DCA6A",height:"50px",width:"100%",alignContent:"center",cursor:"pointer", borderRadius:"5%"}} onClick={handleClick4} ><h3 style={{margin:"auto",display:"flex",justifyContent:"center",paddingTop:"10px"}}  >Sort by Fees</h3></div>
      
       <div onChange={handleOrder} className="opt4">
         <input

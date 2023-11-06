@@ -1,7 +1,7 @@
 import logo from "../Images/logo.png"
 import React,{useState,useEffect} from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { shallowEqual, useDispatch } from 'react-redux'
 import "./Admin.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -29,7 +29,7 @@ export default function Admin() {
     const [dashboard, setDashboard] = useState(true)
     const [doctors, setDoctors] = useState(false)
     const [user, setUser] = useState(false)
-    
+    const navigate = useNavigate()
 
     useEffect(()=>{
         dispatch(getDoctors)
@@ -146,7 +146,7 @@ export default function Admin() {
                 <div className="destination-icon">
                 <FontAwesomeIcon color='black' icon={faSignOutAlt} /> 
                 </div>
-                <p >Logout</p>
+                <p onClick={()=> navigate("/")} >Logout</p>
             </div>
             {/* style={ {fontSize:"20px",color:"gray",textDecoration:"none"}} to={"/"} */}
         </div>

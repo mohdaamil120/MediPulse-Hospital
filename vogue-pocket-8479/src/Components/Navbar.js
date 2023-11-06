@@ -65,8 +65,10 @@ const Navbar = () => {
         ) : (
           <Link to="/login">
             <Button
-              bgColor="#009E60"
-              color="white"
+              bgColor="white"
+              // color="white"
+              fontWeight="bold"
+              background="transparent"
               className="navbar-button"
             >
               SIGN-IN
