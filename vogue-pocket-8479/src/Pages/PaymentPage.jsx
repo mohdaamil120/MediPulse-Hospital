@@ -1,167 +1,64 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+// // PaymentForm.js
+// import React, { useState } from 'react';
+
+// const PaymentForm = () => {
+//   const [cardNumber, setCardNumber] = useState('');
+//   const [expDate, setExpDate] = useState('');
+//   const [cvc, setCvc] = useState('')
+
+//   return (
+//     <div>
+//       <h2>Payment Form</h2>
+//       <div>
+//         <label>Card Number:</label>
+//         <input
+//           type="text"
+//           value={cardNumber}
+//           onChange={(e) => setCardNumber(e.target.value)}
+//         />
+//       </div>
+//       <div>
+//         <label>Expiration Date (MM/YY):</label>
+//         <input
+//           type="text"
+//           value={expDate}
+//           onChange={(e) => setExpDate(e.target.value)}
+//         />
+//       </div>
+//       <div>
+//         <label>CVC:</label>
+//         <input type="text" value={cvc} onChange={(e) => setCvc(e.target.value)} />
+//       </div>
+//       <button onClick={handlePayment}>Pay Now</button>
+//     </div>
+//   );
+// };
+
+// export default PaymentForm;
 
 
-const PaymentPage = () => {
-  const [paymentData, setPaymentData] = useState({
-    cardNumber: '',
-    cardName: '',
-    expirationDate: '',
-    cvv: '',
-    isPaymentSuccessful: false,
-  });
+import React from 'react'
+import StripeCheckout from 'react-stripe-checkout';
 
-  const handleInputChange = (e) => {
-    setPaymentData({
-      ...paymentData,
-      [e.target.name]: e.target.value,
-    });
-  };
+export const PaymentForm = () => {
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Simulate a payment request (you'd use a payment gateway API in a real application)
-    // In this example, we'll just set isPaymentSuccessful to true
-    setPaymentData({ ...paymentData, isPaymentSuccessful: true });
-  };
+    const onToken = (token) => {
+        console.log(token);
+    }
 
-  return paymentData.isPaymentSuccessful ? (
-    <DIV>
-
-      <div className='main'>
-      <h1>Payment Successful!</h1>
-      </div>
-    
-    </DIV>
-  ) : (
-    <DIV>
-      <div className='main'>
-      <h1>Payment Page </h1>
-      <form onSubmit={handleSubmit}>
-
+    return (
         <div>
-          <label>Card Number:</label>
-          <input
-            type="text"
-            name="cardNumber"
-            value={paymentData.cardNumber}
-            onChange={handleInputChange}
-          />
+            <h2>Payment</h2>
+            <StripeCheckout
+                token={onToken}
+                name="Printed T-Shirt"
+                description='US Polo - Medium'
+                image="https://placehold.jp/150x150.png"
+                currency="INR"
+                amount="120000"
+                panelLabel='Make Payment'
+                stripeKey="pk_test_51NwN46SGSe6lG6bP83Rmf9aDMMwLbBRj4acZBi8TEAmneEox9pW5vKXTUMMY8y6X9uo6DKasYylIv4v6s9QD2K8l00kalH5AX2"
+            />
         </div>
-        <div>
-          <label>Cardholder Name:</label>
-          <input
-            type="text"
-            name="cardName"
-            value={paymentData.cardName}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Expiration Date:</label>
-          <input
-            type="text"
-            name="expirationDate"
-            value={paymentData.expirationDate}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>CVV:</label>
-          <input
-            type="text"
-            name="cvv"
-            value={paymentData.cvv}
-            onChange={handleInputChange}
-          />
-        </div>
-        <button type="submit">Submit Payment</button>
-      </form>
-      </div>
-    
-    </DIV>
-  );
-};
-
-const DIV= styled.div`
-margin: auto;
-height: 100%;
-box-shadow: rgba(14, 45, 25, 0.35) 0px 5px 15px;
-/* background-color:#a9ffbd; */
-border:2px solid  #4DCA6A;
-padding: 5%;
-  /* background-image: url("https://t4.ftcdn.net/jpg/06/30/07/51/240_F_630075147_hFX9sPPOcr5OmRfSsrho5dwzYcUCnmyf.jpg"); /* Set the background image */
-  /* background-size: cover; 
-  background-repeat: no-repeat; */ */
-
-.main{
-   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
- /* Don't repeat the image */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  max-width: 400px;
-  margin:5% auto;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; 
-  backdrop-filter: blur(5px); /* Adjust the blur value as needed */
-  -webkit-backdrop-filter: blur(5px);
-  background-color: rgba(255, 255, 255, 0.5);
-
-    @media (max-width: 767px) {
-    max-width: 70%;
-  }
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    max-width: 50%;
-  }
-
-  @media (min-width: 1024px) {
-    max-width: 30%;
-  }
+    )
 }
-
-  form{
-    display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 10px;
-
-  @media (min-width: 768px) {
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-
-  }
-
-  input{
-    padding: 10px;
-  margin: 5px ;
-  border:2px solid  #4DCA6A;
-  border-radius: 5px;
-  outline: none;
-  width: auto;
-  background-color: transparent;
-
-  @media (min-width: 768px) {
-    width: calc(50% - 10px);
-    margin: 5px;
-  }
-  }
-
-  button{
-    padding: 10px;
-  margin: 10px 0;
-  background-color:#4DCA6A ;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:hover {
-    background-color:#145723 ;
-  }
-  }
-`
-export default PaymentPage;

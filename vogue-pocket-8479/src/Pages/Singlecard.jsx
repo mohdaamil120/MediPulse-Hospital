@@ -1,115 +1,271 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+// Import the necessary modules
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getList } from '../Redux/doctorReducer/action';
 import styled from 'styled-components';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import PaymentPage from './PaymentPage';
 
 const Singlecard = () => {
-   
-      const { id } = useParams();
-      const dispatch = useDispatch();
-      const [currdoctor, setcurrdoctor] = useState({});
-      const navi=useNavigate();
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const [currdoctor, setCurrDoctor] = useState({});
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedTime, setSelectedTime] = useState('');
+  const [patientName, setPatientName] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
+  const [showPayment, setShowPayment] = useState(false); // New state to control the display of the payment page
+  const navi = useNavigate();
 
-      const {doctor}= useSelector((store)=>{
-        console.log(store)
-      return {
-        doctor:store.doctorReducer.Doctor
-      }
-    });
+  const { doctor } = useSelector((store) => {
+    return {
+      doctor: store.doctorReducer.Doctor,
+    };
+  });
 
-console.log(doctor)
-let item=doctor[0];
-console.log(item)
+  useEffect(() => {
+    if (doctor.length === 0) {
+      dispatch(getList());
+    }
+  }, [doctor.length, dispatch]);
 
-      useEffect(() => {
-        if (doctor.length === 0) {
-          dispatch(getList());
-        }
-      }, [doctor.length, dispatch]);
-    
-      useEffect(() => {
-        console.log(doctor,"hkjkjhjg")
-        if (id) {
-          const currdoctor = doctor.find((item) => item.id === Number(id));
-          currdoctor && setcurrdoctor(currdoctor);
-           
-      console.log(currdoctor,"current data")
-        }
+  useEffect(() => {
+    if (id) {
+      const currDoctor = doctor.find((item) => item.id === Number(id));
+      currDoctor && setCurrDoctor(currDoctor);
+    }
+  }, [id, doctor]);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  const handleTimeChange = (e) => {
+    setSelectedTime(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validate form fields
+    if (!selectedDate || !selectedTime || !patientName || !contactNumber) {
+      alert('Please fill in all the details before proceeding to payment.');
+      return;
+    }
+
+    // Create a summary of the appointment
+   const appointmentSummary = {
+      doctorName: currdoctor.name,
+      date: selectedDate.toDateString(),
+      time: selectedTime,
+      patientName,
+      contactNumber,
+    };
+    console.log(appointmentSummary);
+    // Redirect to the payment page with appointment summary
+    navi('/paymentpage', { appointmentSummary });
+  };
+
+  // const handleSubmit = () => {
+  //   // Check if all necessary details are filled before showing the payment page
+  //   if (selectedDate && selectedTime && patientName && contactNumber) {
+  //     setShowPayment(true);
+  //   } else {
+  //     alert('Please fill in all the details before proceeding to payment.');
+  //   }
+  // };
+
+  // const handlePaymentSuccess = () => {
+  //   // Handle any post-payment logic here
+  //   console.log('Payment successful! Redirecting to success page...');
+  //   navi('/payment-success'); // Redirect to a success page or any other route as needed
+  // };
  
-        console.log(currdoctor,"current data")
-      }, [id, doctor]);
-   
-      return (
-        <DIV>
-          <div className="top">
-          <div className="photo">
-        <img src={currdoctor.image} />
-      </div>
-      <div className="detail">
-        <h3 style={{color:"#145723"}}>{currdoctor.name}</h3>
-        <p>{currdoctor.education} (experience: {currdoctor.experience} years)</p>
-        <h4 style={{color:"#145723"}}>SPECIALIST</h4>
-        <p>{currdoctor.speciality} </p>
-        <h4 style={{color:"#145723"}}>LOCATION</h4>
-        <p>{currdoctor.location}</p>
-        <p>number:{currdoctor.mobile} </p>
-        <p>Fees:Rs. {currdoctor.fees} </p>
-      </div>
-          </div>
-<div style={{ margin:"2% 0",border:"2px solid #34b151",padding:
-"3%",borderRadius:"20%"}}>
-  <h3 style={{textAlign:'left'}}>Day</h3>
-  <div style={{display:"flex",justifyContent:'space-evenly'}}>
-    <p className='day'>Monady</p>
-    <p className='day'>Tuesday</p>
-    <p className='day'>Wednesday</p>
-    <p className='day'>Thursday</p>
-    <p className='day'>Friday</p>
-    <p className='day'>Saturday</p>
-    <p className='day'>Sunday</p>
-  </div>
-</div>
-   
-      <button onClick={()=>{navi("/paymentpage")}} style={{color:"black", padding:" 2%",
-      backgroundColor:"#4DCA6A",
-      border: "none",borderRadius:"5%"}} className='btn'> Book An Appointment</button>
-        </DIV>
+
+
+  return (
+    <BookingPage>
+      <TopSection>
+        <div className="photo">
+          <img src={currdoctor.image} alt="Doctor" />
+        </div>
+        <div className="detail">
+          <h3>{currdoctor.name}</h3>
+          <p>
+            {currdoctor.education} (experience: {currdoctor.experience} years)
+          </p>
+          <h4>SPECIALIST</h4>
+          <p>{currdoctor.speciality} </p>
+          <h4>LOCATION</h4>
+          <p>{currdoctor.location}</p>
+          <p>number: {currdoctor.mobile} </p>
+          <p>Fees: Rs. {currdoctor.fees} </p>
+        </div>
+      </TopSection>
+      <AppointmentForm>
+        <FormField>
+          <label>Select Date</label>
+          <DatePicker selected={selectedDate} onChange={handleDateChange} />
+        </FormField>
+        <FormField>
+          <label>Select Time</label>
+          <select value={selectedTime} onChange={handleTimeChange}>
+            <option value="">Select Time</option>
+            <option value="09:00 AM">09:00 AM</option>
+            <option value="10:00 AM">10:00 AM</option>
+            {/* Add more time options as needed */}
+          </select>
+        </FormField>
+        <FormField>
+          <label>Patient Name</label>
+          <input
+            type="text"
+            value={patientName}
+            onChange={(e) => setPatientName(e.target.value)}
+          />
+        </FormField>
+        <FormField>
+          <label>Contact Number</label>
+          <input
+            type="number"
+            value={contactNumber}
+            onChange={(e) => setContactNumber(e.target.value)}
+          />
+        </FormField>
+        <SummarySection>
+          <h3>Appointment Summary</h3>
+          <p>
+            <strong>Doctor:</strong> {currdoctor.name}
+          </p>
+          <p>
+            <strong>Date:</strong> {selectedDate.toDateString()}
+          </p>
+          <p>
+            <strong>Time:</strong> {selectedTime}
+          </p>
+          <p>
+            <strong>Patient Name:</strong> {patientName}
+          </p>
+          <p>
+            <strong>Contact Number:</strong> {contactNumber}
+          </p>
+        </SummarySection>
+
+        {/* {!showPayment ? ( */}
+          <BookButton onClick={handleSubmit}>Proceed to Payment</BookButton>
+        {/* ) : (
+          <PaymentPage
+            appointmentSummary={{
+              doctorName: currdoctor.name,
+              date: selectedDate.toDateString(),
+              time: selectedTime,
+              patientName,
+              contactNumber,
+            }}
+            onSuccess={handlePaymentSuccess}
+          />
+        )} */}
+      </AppointmentForm>
+    </BookingPage>
   );
-    
+};
+
+
+// Styled-components for the updated code
+const BookingPage = styled.div`
+  width: 80%;
+  margin: 2% auto;
+  font-family: 'Arial', sans-serif;
+`;
+
+const TopSection = styled.div`
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+
+  .photo img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 20px;
   }
 
-const DIV= styled.div`
-box-shadow: rgba(14, 45, 25, 0.35) 0px 5px 15px;
-border-radius: 10%;
-padding: 5%;
-border:2px solid #4DCA6A;
-.day{
-  display: block;
-  background-color: #4DCA6A ;
-height: 15%;
-width:10%;
-/* border-radius: 5%; */
-}  
+  .detail {
+    flex-grow: 1;
 
+    h3 {
+      color: #145723;
+      margin-bottom: 8px;
+    }
 
-  .top{
-    display: flex;
-    gap:20px;
-    border:2px solid #4DCA6A;
-    padding: 5%;
-    border-radius: 5%;
-  } 
-  .photo{
-    width:50%;
-    height:300px;
-    img{
-      width:100%
+    p {
+      margin-bottom: 4px;
+      color: #666;
     }
   }
-  .detail{
-display: flex;
-flex-direction: column;
+`;
+
+const AppointmentForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+`;
+
+const FormField = styled.div`
+  margin-bottom: 20px;
+
+  label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #145723;
   }
-`
-export default Singlecard
+
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+`;
+
+const SummarySection = styled.div`
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+
+  h3 {
+    color: #145723;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-bottom: 4px;
+    color: #666;
+  }
+`;
+
+const BookButton = styled.button`
+  color: white;
+  padding: 10px;
+  background-color: #4dca6a;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #45b860;
+  }
+`;
+
+export default Singlecard;

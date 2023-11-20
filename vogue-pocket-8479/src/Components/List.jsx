@@ -12,10 +12,11 @@ const List = () => {
     const [searchParams] = useSearchParams();
     const [currentpage, setcurrentpage] = useState(1)
 
-    const {doctor}= useSelector((store)=>{
+    const {doctor, isLoading}= useSelector((store)=>{
         console.log(store)
       return {
-        doctor:store.doctorReducer.Doctor
+        doctor:store.doctorReducer.Doctor,
+        isLoading:store.doctorReducer.isLoading
       }
     })
 
