@@ -1,8 +1,8 @@
 ## vogue-pocket-8479
 
-## [MediPulse] (**Add the deployed link here**)
+## MediPulse 
 
-### Description
+Description
 
 MediPulse is a doctor consultation and appointment booking website. Experiencing the website we can book doctors in the different cities within the variety of different departments by using the filter and sorting.
 In this way, the website can be easily navigated according to our needs. this project uses the React library, with the Javascript and CSS which includes external CSS like CharkaUI and MaterialUI. This website is fully `responsive` so we can have a hassle-free experience on any device.
@@ -48,8 +48,6 @@ MediPulse is designed to be user-friendly and easy to navigate. The website incl
 [**`Doctors`**](vogue-pocket-8479/src/Pages/Doctors.jsx): On this page there is a list of doctors and we can find appropriate doctors by applying the filters available. We can book the appointment or have an on-call consultation.
 
 ![image](C:\Users\HP\Desktop\Untitled.png)
-
-Add the image here.
 
 [**`SignIn and SignUp`**](vogue-pocket-8479/src/Pages/Register.jsx): SignUp page where the customer can create a new account for fast, seamless booking of appointments. SignIn page where existing users can sign in so that their experience is uninterrupted.
 
