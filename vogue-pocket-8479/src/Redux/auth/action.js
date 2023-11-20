@@ -1,4 +1,4 @@
-import { AUTH_REQ, AUTH_REQ_SUCCESS, AUTH_REQ_FAILURE,isLog } from "./actionTypes"
+import { AUTH_REQ, AUTH_REQ_SUCCESS, AUTH_REQ_FAILURE } from "./actionTypes"
 
 export const authRequest = () => {
   return { type: AUTH_REQ }

@@ -31,7 +31,7 @@ const Navbar = () => {
     },
     {
       text: "Contact",
-      link: "",
+      link: "/contact",
     },
   ];
 

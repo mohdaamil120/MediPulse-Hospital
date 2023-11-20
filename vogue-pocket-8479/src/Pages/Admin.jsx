@@ -111,9 +111,9 @@ export default function Admin() {
 
         {/* <!-- left container --> */}
         <div className="left-container">
-        <div className="logo-container">
+        {/* <div className="logo-container">
             <img src={logo} alt="logo" />
-        </div>
+        </div> */}
 
         <div className="admin-card">
             <div className="admin-image-container">
@@ -152,7 +152,7 @@ export default function Admin() {
         </div>
         </div>
         {/* <!-- end of left container --> */}
-
+ 
 
         {/* <!-- right container --> */}
         

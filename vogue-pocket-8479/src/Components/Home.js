@@ -7,8 +7,12 @@ import Work from "./Work";
 import Testimonial from "./Testimonial";
 import About from "./About";
 import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+
+  const navigate = useNavigate()
+
   return (
     <>
     <div className="home-container">
@@ -24,7 +28,7 @@ const Home = () => {
           <p className="primary-text">
           Say Hello to India's top doctors via video consultation, get digital prescriptions, order medicines, book doctor appointments & lab tests, find doctors near 
           </p>
-          <button className="secondary-button">
+          <button className="secondary-button" onClick={()=>{navigate("/doctor")}}>
             Book Now <FiArrowRight />{" "}
           </button>
           
