@@ -21,7 +21,7 @@ A team of 5 members created this project over  the course of six days.
 
 ### Deployed Link
  
-old link https://vogue-pocket-8479-ftweywdrx-mohdaamil120.vercel.app/ 
+old link https://vogue-pocket-8479-ftweywdrx-mohdaamil120.vercel.app/ \n
 New link https://vogue-pocket-8479-8gpxiyi3q-mohdaamil120.vercel.app/
 
 ### JSON Server
