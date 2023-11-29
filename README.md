@@ -20,9 +20,9 @@ A team of 5 members created this project over  the course of six days.
 5. [Piyush Sharma ](https://github.com/pspiyush130)
 
 ### Deployed Link
-
-// old one https://vogue-pocket-8479-ftweywdrx-mohdaamil120.vercel.app/ 
-https://vogue-pocket-8479-8gpxiyi3q-mohdaamil120.vercel.app/
+ 
+old link https://vogue-pocket-8479-ftweywdrx-mohdaamil120.vercel.app/ 
+New link https://vogue-pocket-8479-8gpxiyi3q-mohdaamil120.vercel.app/
 
 ### JSON Server
 https://vogue-pocket-data.onrender.com
